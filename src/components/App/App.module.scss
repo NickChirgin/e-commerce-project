@@ -1,0 +1,23 @@
+
+body {
+    padding: 0;
+    width: 75vw;
+    margin-left: 12.5vw;
+    font-family: eudoxus sans, sans-serif;
+}
+
+@media (max-width: 1200px) {
+    body {
+        width: 90vw;
+        margin-left: 5vw;
+        margin: 0;
+    }
+}
+
+@media (max-width: 800px) {
+    body {
+        width: 100vw;
+        margin: auto;
+        padding: 0;
+    }
+}

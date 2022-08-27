@@ -1,0 +1,24 @@
+.button {
+    box-sizing: border-box;
+    height: 84px;
+    background: url(../../assets/img/filter.svg) no-repeat 30px 30px;
+    background-position: left 57px top 27px;
+    background-color: #FFF;
+    width: 190px;
+    text-align: center;
+    font-size: 18px;
+    padding-left: 95px;
+    padding-top: 33px;
+    margin-left: 29px;
+    margin-right: 2px;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    .button {
+        display: none;
+    }
+}
