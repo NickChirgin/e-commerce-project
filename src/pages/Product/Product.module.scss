@@ -1,5 +1,6 @@
 .productPage{
     background-color: #FFF;
+    box-sizing: border-box;
 }
 .product {
     display: flex;
@@ -25,6 +26,7 @@
     margin-right: 100px;
     margin-left: 50px;
     display: flex;
+    flex-wrap: wrap;
     background-color: #FFF;
 }
 
@@ -54,6 +56,10 @@
     line-height: 130%;
     color: #151411;
     margin-bottom: 20px;
+}
+
+.product__info_description {
+    color: #AFADB5;
 }
 
 .product__info_colors{
@@ -95,5 +101,92 @@
     }
     & button:first-child {
         margin-right: 20px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .product {
+        display: flex;
+        margin: 50px 24px 30px;
+        background-color: #FFF;
+        
+        box-sizing: border-box;
+        & img {
+            width: 500px;
+            height: 500px;
+            margin-right: 50px;
+        }
+    }
+
+    .product__related_items {
+        margin: 0;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 1240px) {
+    .product {
+        display: flex;
+        flex-direction: column;       
+        box-sizing: border-box;
+        align-items: center;
+        & img {
+            width: 400px;
+            height: 400px;
+        }
+    }
+
+    .product__related_items {
+        margin: 0;
+        justify-content: space-between;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .product {
+        & img {
+            width: 327px;
+            height: 327px;
+            margin: 0 24px;
+        }
+    }
+    .product__info_buttons {
+        flex-direction: column;
+        & button {
+            width: 327px;
+            height: 53px;
+            margin: 0 auto 100px;
+        }
+        & button:first-child {
+            margin: 0 auto 15px;
+        }
+    }
+    .product__related_title {
+        margin-bottom: 23px;
+    }
+    .product__info_title {
+        font-size: 24px;
+    }
+    .product__info_subtitle {
+        font-size: 14px;
+    }
+    .product__info_color {
+        font-size: 14px;
+    }
+    .product__info_colors {
+        & div {
+            width: 30px;
+        }
+    }
+    .product__info_description {
+        font-size: 14px;
+    }
+    .product__info_price {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .product__related_title {
+        margin-left: 24px;
     }
 }

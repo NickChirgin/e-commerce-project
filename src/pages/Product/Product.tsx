@@ -14,6 +14,7 @@ const Product: React.FC = () => {
   const { id } = useParams();
   const [productData, setProductData] = useState<Cards>({} as Cards);
   const [relatedProductData, setRelatedProductData] = useState<Cards[]>([]);
+  let shortDesc = '';
   useEffect(() => {
     const fetchProduct = async () => {
       const product = await axios({

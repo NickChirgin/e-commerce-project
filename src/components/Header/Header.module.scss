@@ -33,6 +33,9 @@ header {
     display: flex;
     
 }
+.header__nav_mobile{
+    display: none;
+}
 
 .header__logo_image {
     display: flex;
@@ -55,6 +58,11 @@ header {
     max-height: 18px;
 }
 
+.header__logo_link{
+    text-decoration: none;
+    color: black;
+}
+
 .header__logo_image img:nth-of-type(2){
     max-width: 22.5px;
     max-height: 3.5px;
@@ -64,7 +72,14 @@ header {
     margin-left: 12px;
     font-size: 18px;
     font-weight: 700;
+    text-decoration: none;
 }
+
+.header__logo_company:visited {
+    text-decoration: none;
+    color: black;
+}
+
 
 .header__settings img{
     width: 30px;
@@ -72,3 +87,18 @@ header {
     padding-left: 28px;
 }
 
+@media (max-width: 1000px) {
+    header {
+        height: 72px;
+    }
+
+    .header__nav {
+        display: none;
+    }
+    .header__settings{
+        display: none;
+    }
+    .header__nav_mobile{
+        display: block;
+    }
+}

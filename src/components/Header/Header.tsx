@@ -1,4 +1,5 @@
 import bag from '@img/bag.svg';
+import menu from '@img/menu.svg';
 import user from '@img/user.svg';
 import V1 from '@img/V1.svg';
 import V2 from '@img/V2.svg';
@@ -17,7 +18,12 @@ const Header: React.FC = () => {
             <img src={V2} alt="v2" />
             <img src={V3} alt="v3" />
           </div>
-          <h2 className={headerStyles.header__logo_company}>Lalasia</h2>
+          <Link to={`/`} className={headerStyles.header__logo_link}>
+            <h2 className={headerStyles.header__logo_company}>Lalasia</h2>
+          </Link>
+        </div>
+        <div className={headerStyles.header__nav_mobile}>
+          <img src={menu} alt="" />
         </div>
         <nav className={headerStyles.header__nav}>
           <Link to={`/`} className={headerStyles.header__nav_current}>
