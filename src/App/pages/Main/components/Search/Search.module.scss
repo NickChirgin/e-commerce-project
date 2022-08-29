@@ -42,7 +42,7 @@
 
 .search__product_input {
     box-sizing: border-box;
-    background: url(../../assets/img/search.svg) no-repeat 32px 32px;
+    background: url(../../../../../assets/img/search.svg) no-repeat 32px 32px;
     background-position: left 25px top 26px;
     font-size: 18px;
     color: #AFADB5;
@@ -85,7 +85,7 @@
 
 @media (max-width: 1000px) {
     .search__product_input {
-        background: url(../../assets/img/search.svg) no-repeat 19px 19px;
+        background: url(../../../../../assets/img/search.svg) no-repeat 19px 19px;
         background-position: left 16px top 13px;
         height: 68%;
         padding-left: 50px;

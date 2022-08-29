@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 import CardList from '@components/CardList';
 import { Cards } from '@components/CardList/CardList';
 import Header from '@components/Header';
-import Search from '@components/Search';
 import axios from 'axios';
+
+import Search from './components/Search';
 
 function Main() {
   const [data, setData] = useState<Cards[]>([]);

@@ -1,3 +1,4 @@
+import { ROUTES } from '@config/routes';
 import Main from '@pages/Main';
 import Product from '@pages/Product';
 import './App.module.scss';
@@ -7,10 +8,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/products">
-          <Route path=":id" element={<Product />} />
-        </Route>
+        <Route path={ROUTES.MAIN} element={<Main />} />
+        <Route path={ROUTES.PRODUCT} element={<Product />} />
       </Routes>
     </BrowserRouter>
   );

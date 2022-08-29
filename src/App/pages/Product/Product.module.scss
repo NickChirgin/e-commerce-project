@@ -23,9 +23,9 @@
     color: #151411;
 }
 .product__related_items {
-    margin-right: 100px;
     margin-left: 50px;
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     background-color: #FFF;
 }
@@ -60,10 +60,12 @@
 
 .product__info_description {
     color: #AFADB5;
+    margin-bottom: 30px;
 }
 
 .product__info_colors{
     display: flex;
+    margin-bottom: 20px;
     & div {
         display: inline-block;
         width: 50px;
@@ -181,6 +183,7 @@
     }
     .product__info_description {
         font-size: 14px;
+        margin-bottom: 16px;
     }
     .product__info_price {
         font-size: 24px;

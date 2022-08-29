@@ -43,16 +43,16 @@
     margin-bottom: 6px;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1885px) {
     .card{
         box-sizing: border-box;
-        width: 350px;
+        width: 280px;
         
     }
     .card__image {
         box-sizing: border-box;
-        width: 350px;
-        height: 318px;
+        width: 280px;
+        height: 254.5px;
         margin: 15px;
     }
 
@@ -69,7 +69,6 @@
         box-sizing: border-box;
         width: 280px;
         height: 254.5px;
-        margin: 15px;
     }
 
     .card__paragraph:last-child {

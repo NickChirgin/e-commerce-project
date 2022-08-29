@@ -5,6 +5,7 @@ import { ButtonColor } from '@components/Button/Button';
 import Card from '@components/Card';
 import { Cards } from '@components/CardList/CardList';
 import Header from '@components/Header';
+import { API_ENDPOINTS } from '@config/api';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -14,17 +15,16 @@ const Product: React.FC = () => {
   const { id } = useParams();
   const [productData, setProductData] = useState<Cards>({} as Cards);
   const [relatedProductData, setRelatedProductData] = useState<Cards[]>([]);
-  let shortDesc = '';
   useEffect(() => {
     const fetchProduct = async () => {
       const product = await axios({
         method: 'get',
-        url: `https://fakestoreapi.com/products/${id}`,
+        url: `${API_ENDPOINTS.PRODUCT}${id}`,
       });
       setProductData(product.data);
       const relatedItems = await axios({
         method: 'get',
-        url: `https://fakestoreapi.com/products/category/${product.data.category}?limit=3`,
+        url: `${API_ENDPOINTS.CATEGORY}${product.data.category}?limit=3`,
       });
       setRelatedProductData(relatedItems.data);
     };
