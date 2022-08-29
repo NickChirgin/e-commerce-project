@@ -16,10 +16,11 @@
 .card__paragraph {
     color: #AFADB5;
 }
-.card__paragraph:first-child{
+.card__paragraph:nth-of-type(1){
     font-weight: 700;
     margin-bottom: 14px;
     color: #AFADB5;
+    margin: 26px 0 14px;
 }
 .card__paragraph:nth-of-type(2) {
     font-weight: 500;
