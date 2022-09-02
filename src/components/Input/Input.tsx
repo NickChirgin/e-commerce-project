@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
+import rootStore from '@store/RootStore';
 import cn from 'classnames';
 
 export type InputProps = Omit<
@@ -25,23 +26,16 @@ const Input: React.FC<InputProps> = ({
   const inputClassName = cn(className, disabled ? 'input_disabled' : '');
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVal(e.target.value);
+    // rootStore.query.setSearch(val);
   };
-  useEffect(() => setVal(value), [value]);
-  return !disabled ? (
+  return (
     <input
       type="text"
-      value={val}
+      placeholder={val}
       className={inputClassName}
-      {...rest}
       onChange={handleChange}
-    />
-  ) : (
-    <input
-      type="text"
-      value={val}
-      className={inputClassName}
+      disabled={disabled}
       {...rest}
-      disabled
     />
   );
 };

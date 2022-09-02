@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 
-import CardList from '@components/CardList';
-import { Cards } from '@components/CardList/CardList';
+import CardList from '@components/CardList/';
 import Header from '@components/Header';
+import { CardsModel } from '@store/models/product/cards';
+import { useQueryParamsStore } from '@store/RootStore/hooks/useQueryParamsStore';
 import axios from 'axios';
+import { observer } from 'mobx-react-lite';
 
 import Search from './components/Search';
 
 function Main() {
-  const [data, setData] = useState<Cards[]>([]);
+  useQueryParamsStore();
+  const [data, setData] = useState<CardsModel[]>([]);
   useEffect(() => {
     const fetch = async () => {
       const result = await axios({
@@ -28,4 +31,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default observer(Main);

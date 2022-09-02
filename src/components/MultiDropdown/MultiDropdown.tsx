@@ -11,9 +11,9 @@ export type Option = {
 };
 
 export type MultiDropdownProps = {
-  options: Option[];
-  value: Option[];
-  onChange?: (value: Option[]) => void;
+  options: string[];
+  value: string[];
+  onChange?: (value: string[]) => void;
   disabled?: boolean;
   text: string;
   // pluralizeOptions: (value: Option[]) => string;
@@ -31,8 +31,8 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   const [isShown, setIsShown] = useState(false);
   let cnButton = cn(mdStyles.button, disabled ? mdStyles.button__disabled : '');
   const clickHandler = () => setIsShown((prev) => !prev);
-  const changer = (option: Option) => {
-    const newValues = value.filter((city) => city.key !== option.key);
+  const changer = (option: string) => {
+    const newValues = value.filter((city) => city !== option);
     if (newValues.length === value.length) newValues.push(option);
     // onChange(newValues);
   };
@@ -45,8 +45,8 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
       {!disabled &&
         isShown &&
         options.map((option) => (
-          <div key={option.key} onClick={() => changer(option)}>
-            {option.value}
+          <div key={option} onClick={() => changer(option)}>
+            {option}
           </div>
         ))}
     </div>

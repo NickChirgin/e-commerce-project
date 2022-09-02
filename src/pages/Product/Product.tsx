@@ -1,44 +1,34 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import Button from '@components/Button';
 import { ButtonColor } from '@components/Button/Button';
 import Card from '@components/Card';
-import { Cards } from '@components/CardList/CardList';
 import Header from '@components/Header';
-import { API_ENDPOINTS } from '@config/api';
-import axios from 'axios';
+import ProductStore from '@store/ProductStore';
+import useLocalStore from '@utils/useLocalStore';
+import { observer } from 'mobx-react-lite';
 import { useParams } from 'react-router-dom';
 
 import productStyle from './Product.module.scss';
 
 const Product: React.FC = () => {
   const { id } = useParams();
-  const [productData, setProductData] = useState<Cards>({} as Cards);
-  const [relatedProductData, setRelatedProductData] = useState<Cards[]>([]);
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const product = await axios({
-        method: 'get',
-        url: `${API_ENDPOINTS.PRODUCT}${id}`,
-      });
-      setProductData(product.data);
-      const relatedItems = await axios({
-        method: 'get',
-        url: `${API_ENDPOINTS.CATEGORY}${product.data.category}?limit=3`,
-      });
-      setRelatedProductData(relatedItems.data);
-    };
-    fetchProduct();
-  }, [id]);
+  const productStore = useLocalStore(() => new ProductStore());
 
+  useEffect(() => {
+    productStore.getProducts(id);
+  }, [id, productStore]);
   return (
     <div className={productStyle.productPage}>
       <Header />
       <div className={productStyle.product}>
-        <img src={productData.image} alt={productData.title} />
+        <img
+          src={productStore.product?.image}
+          alt={productStore.product?.title}
+        />
         <div className={productStyle.product__info}>
           <p className={productStyle.product__info_title}>
-            {productData.title}
+            {productStore.product?.title}
           </p>
           <p className={productStyle.product__info_subtitle}>
             Combination of wood and wool
@@ -51,21 +41,25 @@ const Product: React.FC = () => {
             <div></div>
           </div>
           <p className={productStyle.product__info_description}>
-            {productData.description}
+            {productStore.product?.description}
           </p>
           <p className={productStyle.product__info_price}>
-            {'$' + productData.price}
+            {'$' + productStore.product?.price}
           </p>
           <div className={productStyle.product__info_buttons}>
-            <Button children="Buy Now" />
-            <Button children="Add to Chart" color={ButtonColor.secondary} />
+            <Button loading={productStore.loading} children="Buy Now" />
+            <Button
+              loading={productStore.loading}
+              children="Add to Chart"
+              color={ButtonColor.secondary}
+            />
           </div>
         </div>
       </div>
       <div className={productStyle.product__related}>
         <p className={productStyle.product__related_title}>Related Items</p>
         <div className={productStyle.product__related_items}>
-          {relatedProductData.map((product: Cards) => (
+          {productStore.relatedProducts.map((product) => (
             <Card
               key={product.id}
               id={product.id}
@@ -82,4 +76,4 @@ const Product: React.FC = () => {
   );
 };
 
-export default Product;
+export default observer(Product);

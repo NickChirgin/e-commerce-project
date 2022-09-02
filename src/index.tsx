@@ -1,8 +1,9 @@
 import React from 'react';
 
+import '@config/configureMobX';
 import ReactDOM from 'react-dom/client';
+import '@styles/index.scss';
 
-import '@styles/index.module.scss';
 import App from './App';
 
 const root = ReactDOM.createRoot(
