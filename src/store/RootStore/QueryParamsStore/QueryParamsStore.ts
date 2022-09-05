@@ -14,12 +14,11 @@ export default class QueryParamsStore {
       _search: observable.ref,
       search: computed,
       setSearch: action,
-      setFilter: action,
     });
   }
 
   setSearch(search: string): void {
-    search = search.startsWith('?') ? search.slice(1) : search;
+    search = search.startsWith('?search=') ? search.slice(1) : search;
     if (this._search !== search) {
       this._search = search;
       this._params = qs.parse(search);
@@ -28,14 +27,6 @@ export default class QueryParamsStore {
 
   get search(): string {
     return this._search;
-  }
-
-  setFilter(filter: string): void {
-    filter = filter.startsWith('?') ? filter.slice(1) : filter;
-    if (this._filter !== filter) {
-      this._filter = filter;
-      this._params = qs.parse(filter);
-    }
   }
 
   getParam(

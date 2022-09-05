@@ -1,7 +1,7 @@
-import { API_ENDPOINTS } from '@config/api';
+import { api } from '@config/api';
+import { API_ENDPOINTS, relatedItemsLimit } from '@config/endpoint';
 import { CardsModel, normalizeCards } from '@store/models/product/cards';
 import { ILocalStore } from '@utils/useLocalStore';
-import axios from 'axios';
 import {
   action,
   computed,
@@ -45,14 +45,10 @@ export default class ProductStore implements ILocalStore {
     this._isLoading = true;
     this._product = null;
     this._relatedProducts = [];
-    const product = await axios({
-      method: 'get',
-      url: `${API_ENDPOINTS.PRODUCT}${id}`,
-    });
-    const relatedItems = await axios({
-      method: 'get',
-      url: `${API_ENDPOINTS.CATEGORY}${product.data.category}?limit=3`,
-    });
+    const product = await api.get(`${API_ENDPOINTS.PRODUCT}${id}`);
+    const relatedItems = await api.get(
+      `${API_ENDPOINTS.CATEGORY}${product.data.category}?limit=${relatedItemsLimit}`
+    );
     runInAction(() => {
       try {
         this._product = normalizeCards(product.data);
@@ -61,7 +57,6 @@ export default class ProductStore implements ILocalStore {
       } catch (e) {
         this._isLoading = true;
         this._product = null;
-        this._relatedProducts = [];
       }
     });
   }

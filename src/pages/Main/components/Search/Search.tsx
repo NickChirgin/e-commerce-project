@@ -1,23 +1,46 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import Button from '@components/Button';
 import Input from '@components/Input';
 import MultiDropdown from '@components/MultiDropdown';
 import MainPageStore from '@store/MainPageStore';
-import useLocalStore from '@utils/useLocalStore';
+import rootStore from '@store/RootStore';
 import { observer } from 'mobx-react-lite';
+import { useSearchParams } from 'react-router-dom';
 
 import searchStyle from './Search.module.scss';
 
 type SearchProps = {
   length: number;
+  store: MainPageStore;
 };
+// {
+//   store.getProductsWithFilter(searchParams.get('search'));
+// }
 
-const Search: React.FC<SearchProps> = ({ length }) => {
-  const mainPageStore = useLocalStore(() => new MainPageStore());
+const Search: React.FC<SearchProps> = ({ length, store }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
-    mainPageStore.getCategories();
-  }, [mainPageStore]);
+    store.getCategories();
+  }, [store]);
+  const clickHandler = async (e: any) => {
+    setSearchParams({
+      ...searchParams,
+      search: e.target.previousSibling?.value,
+      page: '1',
+    });
+    store.getProductsWithFilter(
+      searchParams.get('search'),
+      searchParams.get('page'),
+      store.choosenCategories
+    );
+  };
+  const changer = (option: string) => {
+    const newValues = store.choosenCategories.filter((city) => city !== option);
+    if (newValues.length === store.choosenCategories.length)
+      newValues.push(option);
+    store.setCategories(newValues);
+  };
   return (
     <div className={searchStyle.search__wrapper}>
       <div className={searchStyle.page}>
@@ -36,13 +59,18 @@ const Search: React.FC<SearchProps> = ({ length }) => {
           <Button
             children={window.innerWidth < 1000 ? 'Search' : 'Find Now'}
             className={searchStyle.search__product_button}
-            onClick={() => {}}
+            onClick={clickHandler}
           />
         </div>
         <MultiDropdown
-          options={mainPageStore.categories}
-          value={[]}
-          text={'Filter'}
+          options={store.categories}
+          value={store.choosenCategories}
+          text={
+            store.choosenCategories !== []
+              ? store.choosenCategories.join(',')
+              : 'Filter'
+          }
+          onChange={(value: string) => changer(value)}
         />
       </div>
       <div className={searchStyle.products}>
