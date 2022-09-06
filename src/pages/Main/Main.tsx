@@ -5,20 +5,18 @@ import Header from '@components/Header';
 import leftarrow from '@img/leftarrow.svg';
 import rightarrow from '@img/rightarrow.svg';
 import MainPageStore from '@store/MainPageStore';
-import rootStore from '@store/RootStore';
 import { useQueryParamsStore } from '@store/RootStore/hooks/useQueryParamsStore';
 import useLocalStore from '@utils/useLocalStore';
-import cn from 'classnames';
 import { observer } from 'mobx-react-lite';
 import { useSearchParams } from 'react-router-dom';
 
 import Search from './components/Search';
+import mainStyle from './Main.module.scss';
 
 function Main() {
   useQueryParamsStore();
   const [searchParams, setSearchParams] = useSearchParams();
   const mainPageStore = useLocalStore(() => new MainPageStore());
-  const currentPage = cn();
   const clickHandler = (page: number): void => {
     if (searchParams.get('search')) {
       setSearchParams({
@@ -32,27 +30,41 @@ function Main() {
     }
   };
   useEffect(() => {
-    mainPageStore.getProductsWithFilter(
-      searchParams.get('search'),
-      searchParams.get('page'),
-      mainPageStore.choosenCategories
-    );
-  }, [mainPageStore, searchParams]);
+    mainPageStore.setProducts();
+  }, [mainPageStore]);
   return (
     <>
       <Header />
-      <Search length={mainPageStore.products.length} store={mainPageStore} />
-      <CardList products={mainPageStore.products}></CardList>
-      <div>
-        <img src={leftarrow} alt="left arrow" />
-        <div>
+      <Search
+        count={mainPageStore.filteredProducts.length}
+        store={mainPageStore}
+      />
+      <CardList products={mainPageStore.paginatedProducts}></CardList>
+      <div className={mainStyle.pagination}>
+        <img
+          className={mainStyle.pagination__image}
+          src={leftarrow}
+          alt="left arrow"
+        />
+        <div className={mainStyle.pagination__wrapper}>
           {mainPageStore.pagesAmount.map((page) => (
-            <div key={page} onClick={() => clickHandler(page)}>
+            <div
+              className={`${mainStyle.pagination__wrapper_page} ${
+                page === Number(searchParams.get('page')) &&
+                mainStyle.pagination__wrapper_current
+              }`}
+              key={page}
+              onClick={() => clickHandler(page)}
+            >
               {page}
             </div>
           ))}
         </div>
-        <img src={rightarrow} alt="right arrow" />
+        <img
+          className={mainStyle.pagination__image}
+          src={rightarrow}
+          alt="right arrow"
+        />
       </div>
     </>
   );

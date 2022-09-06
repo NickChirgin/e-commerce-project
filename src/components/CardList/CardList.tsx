@@ -1,5 +1,6 @@
 import Card from '@components/Card';
 import { CardsModel } from '@store/models/product/cards';
+import { observer } from 'mobx-react-lite';
 
 import cardListStyle from './CardList.module.scss';
 
@@ -18,8 +19,8 @@ const CardList: React.FC<CardsProps> = ({ products }) => {
             category={product.category}
             title={product.title}
             image={product.image}
-            content={product.price}
-            subtitle={product.description}
+            price={product.price}
+            description={product.description}
           />
         ))}
       </div>
@@ -27,4 +28,4 @@ const CardList: React.FC<CardsProps> = ({ products }) => {
   );
 };
 
-export default CardList;
+export default observer(CardList);

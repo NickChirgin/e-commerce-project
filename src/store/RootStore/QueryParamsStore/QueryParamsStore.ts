@@ -6,7 +6,6 @@ type PrivateFields = '_params' | '_search';
 export default class QueryParamsStore {
   private _params: qs.ParsedQs = {};
   private _search: string = '';
-  private _filter: string = '';
 
   constructor() {
     makeObservable<QueryParamsStore, PrivateFields>(this, {

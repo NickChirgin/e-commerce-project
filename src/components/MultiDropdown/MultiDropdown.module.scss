@@ -1,20 +1,38 @@
 .button {
     box-sizing: border-box;
     height: 84px;
-    background: url(../../assets/img/filter.svg) no-repeat 30px 30px;
     background-position: left 57px top 27px;
     background-color: #FFF;
     width: 190px;
     text-align: center;
     font-size: 18px;
-    padding-left: 95px;
-    padding-top: 33px;
+    // padding-left: 95px;
+    padding-top: 23px;
     margin-left: 29px;
     margin-right: 2px;
+    margin-bottom: 10px;
 }
 
 .button:hover {
     cursor: pointer;
+}
+
+.button__focus {
+    border: 1px solid #518581;
+}
+
+.dropdown__option {
+    width: 190px;
+    height: 42px;
+    text-align: center;
+    margin-left: 29px;
+    background-color: #FFF;
+    vertical-align: middle;
+    padding-top: 13px;
+}
+
+.dropdown__current_option {
+    color: #518581;
 }
 
 @media (max-width: 1000px) {

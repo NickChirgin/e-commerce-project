@@ -1,6 +1,5 @@
 import React from 'react';
 
-import rootStore from '@store/RootStore/instance';
 import cn from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 
@@ -12,10 +11,6 @@ export type InputProps = Omit<
   onChange?: (value: string) => void;
 };
 
-export type Ob = {
-  [key: string]: string;
-};
-
 const Input: React.FC<InputProps> = ({
   value,
   className,
@@ -24,7 +19,7 @@ const Input: React.FC<InputProps> = ({
   ...rest
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const inputClassName = cn(className, disabled ? 'input_disabled' : '');
+  const inputClassName = cn(className, disabled && 'input_disabled');
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams({ ...searchParams, search: e.target.value });
   };

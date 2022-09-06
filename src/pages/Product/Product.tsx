@@ -60,15 +60,7 @@ const Product: React.FC = () => {
         <p className={productStyle.product__related_title}>Related Items</p>
         <div className={productStyle.product__related_items}>
           {productStore.relatedProducts.map((product) => (
-            <Card
-              key={product.id}
-              id={product.id}
-              category={product.category}
-              title={product.title}
-              image={product.image}
-              content={product.price}
-              subtitle={product.description}
-            />
+            <Card key={product.id} {...product} />
           ))}
         </div>
       </div>

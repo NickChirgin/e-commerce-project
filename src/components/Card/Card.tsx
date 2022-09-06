@@ -8,8 +8,8 @@ export type CardProps = {
   image: string;
   category?: string;
   title: string;
-  subtitle: string;
-  content?: string;
+  description: string;
+  price?: string;
   onClick?: React.MouseEventHandler;
 };
 
@@ -18,8 +18,8 @@ const Card: React.FC<CardProps> = ({
   image,
   category,
   title,
-  subtitle,
-  content,
+  description,
+  price,
   onClick,
 }) => {
   return (
@@ -34,8 +34,8 @@ const Card: React.FC<CardProps> = ({
       >
         {title.slice(0, 20)}
       </Link>
-      <p className={cardStyle.card__paragraph}>{subtitle.slice(0, 30)}</p>
-      <p className={cardStyle.card__paragraph}>{`$${content}`}</p>
+      <p className={cardStyle.card__paragraph}>{description.slice(0, 30)}</p>
+      <p className={cardStyle.card__paragraph}>{`$${price}`}</p>
     </div>
   );
 };

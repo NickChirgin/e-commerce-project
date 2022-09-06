@@ -2,7 +2,6 @@ import { routes } from '@config/routes';
 import Main from '@pages/Main';
 import Product from '@pages/Product';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.module.scss';
 
 function App() {
   return (
