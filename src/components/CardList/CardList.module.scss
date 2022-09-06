@@ -1,3 +1,4 @@
+@import '@styles/colors.scss';
 .products__cardslist {
     box-sizing: border-box;
     width: 100%;
@@ -5,7 +6,7 @@
     flex: 1;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-color: #FFF;
+    background-color: $bg-color-white;
     margin-bottom: 40px;
 }
 

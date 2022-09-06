@@ -1,8 +1,8 @@
+@import '@styles/colors.scss';
 .card {
     font-size: 18px;
     line-height: 130%;
     box-sizing: border-box;
-    font-family: 'Eudoxus Sans';
     margin: 30px;
     &__image {
         min-width: 156px;
@@ -12,31 +12,31 @@
         margin-bottom: 26px;
     }
     &__paragraph {
-        color: #AFADB5;
+        color: $font-color-grey;
     }
     &__paragraph:nth-of-type(1){
         font-weight: 700;
         margin-bottom: 14px;
-        color: #AFADB5;
+        color: $font-color-grey;
         margin: 26px 0 14px;
     }
     &__paragraph:nth-of-type(2) {
         font-weight: 500;
         margin-bottom: 18px;
         margin-top: 6px;
-        color: #AFADB5;
+        color: $font-color-grey;
     }
     &__paragraph:last-child{
         font-size: 24px;
         font-weight: 700;
-        color: #151411;
+        color: $font-color-black;
         padding-bottom: 30px;
     }
     &__title {
         text-decoration: none;
         font-weight: 700;
         font-size: 26px;
-        color: #151411;
+        color: $font-color-black;
         letter-spacing: 0.01em;
         margin-top: 14px;
         margin-bottom: 6px;

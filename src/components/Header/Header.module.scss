@@ -1,3 +1,4 @@
+@import '@styles/colors.scss';
 header {
     box-sizing: border-box;
     position: relative;
@@ -7,8 +8,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #FFF;
-    border-bottom: 2px solid #F3F3F3;
+    background-color: $bg-color-white;
+    border-bottom: 2px solid $border-color-white;
 }
 
 .header__nav {
@@ -22,8 +23,8 @@ header {
 }
 
 .header__nav_current {
-    color: #518581;
-    border-bottom: 3px solid #518581;
+    color: $bg-color-primary;
+    border-bottom: 3px solid $bg-color-primary;
     padding: 44px 0;
     text-decoration: none;
 }
@@ -59,7 +60,7 @@ header {
 
 .header__logo_link {
     text-decoration: none;
-    color: black;
+    color: $font-color-black;
     margin-top: auto;
 }
 
@@ -77,7 +78,7 @@ header {
 
 .header__logo_company:visited {
     text-decoration: none;
-    color: black;
+    color: $font-color-black;
 }
 
 

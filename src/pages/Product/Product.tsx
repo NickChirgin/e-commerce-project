@@ -19,7 +19,7 @@ const Product: React.FC = () => {
     productStore.getProducts(id);
   }, [id, productStore]);
   return (
-    <div className={productStyle.productPage}>
+    <div className={productStyle.product_page}>
       <Header />
       <div className={productStyle.product}>
         <img

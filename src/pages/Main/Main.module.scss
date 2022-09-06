@@ -1,3 +1,4 @@
+@import '@styles/colors.scss';
 .pagination {
     width: 296px;
     height: 42px;
@@ -19,7 +20,7 @@
             font-size: 18px;
         }
         &_current {
-            background-color: #518581;
+            background-color: $bg-color-primary;
         }
     }
 }
