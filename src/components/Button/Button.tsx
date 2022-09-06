@@ -29,14 +29,14 @@ const Button: React.FC<ButtonProps> = ({
     loading || disabled ? buttonStyles.button_disabled : '',
     buttonStyles[colour]
   );
-  return !loading && !disabled ? (
-    <button className={buttonClass} {...args}>
-      {children ? children : null}
+  return !loading ? (
+    <button className={buttonClass} {...args} disabled={disabled}>
+      {children}
     </button>
   ) : (
-    <button className={buttonClass} disabled {...args}>
+    <button className={buttonClass} disabled={disabled} {...args}>
       <Loader />
-      {children ? children : null}
+      {children}
     </button>
   );
 };

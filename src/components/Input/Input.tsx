@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import cn from 'classnames';
+import { useSearchParams } from 'react-router-dom';
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -10,10 +11,6 @@ export type InputProps = Omit<
   onChange?: (value: string) => void;
 };
 
-export type Ob = {
-  [key: string]: string;
-};
-
 const Input: React.FC<InputProps> = ({
   value,
   className,
@@ -21,27 +18,20 @@ const Input: React.FC<InputProps> = ({
   disabled,
   ...rest
 }) => {
-  const [val, setVal] = useState(value);
-  const inputClassName = cn(className, disabled ? 'input_disabled' : '');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const inputClassName = cn(className, disabled && 'input_disabled');
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setVal(e.target.value);
+    setSearchParams({ ...searchParams, search: e.target.value });
   };
-  useEffect(() => setVal(value), [value]);
-  return !disabled ? (
+  return (
     <input
       type="text"
-      value={val}
+      placeholder={value}
       className={inputClassName}
-      {...rest}
       onChange={handleChange}
-    />
-  ) : (
-    <input
-      type="text"
-      value={val}
-      className={inputClassName}
+      value={searchParams.get('search') as string}
+      disabled={disabled}
       {...rest}
-      disabled
     />
   );
 };

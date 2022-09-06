@@ -6,7 +6,9 @@
       "@config/*": ["src/config/*"],
       "@styles/*": ["src/styles/*"],
       "@img/*": ["src/assets/img/*"],
-      "@pages/*": ["src/App/pages/*"]
+      "@pages/*": ["src/pages/*"],
+      "@store/*": ["src/store/*"],
+      "@utils/*": ["src/utils/*"]
     }
   }
 }

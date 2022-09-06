@@ -1,11 +1,13 @@
-.productPage{
-    background-color: #FFF;
+@import '@styles/colors.scss';
+@import '@styles/typography.scss';
+.product_page{
+    background-color: $bg-color-white;
     box-sizing: border-box;
 }
 .product {
     display: flex;
     margin: 100px 100px 50px;
-    background-color: #FFF;
+    background-color: $bg-color-white;
     & img {
         width: 600px;
         height: 600px;
@@ -13,53 +15,45 @@
     }
 }
 .product__related_title{
-    background-color: #FFF;
+    background-color: $bg-color-white;
     margin-left: 100px;
     font-style: normal;
-    font-weight: 700;
+    @include typo-title-medium;
     font-size: 32px;
-    line-height: 130%;
-    letter-spacing: 0.01em;
-    color: #151411;
+    color: $font-color-black;
 }
 .product__related_items {
     margin-left: 50px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-color: #FFF;
+    background-color: $bg-color-white;
 }
 
 .product__info_title {
     font-style: normal;
-    font-weight: 700;
-    font-size: 44px;
-    line-height: 130%;
-    color: #151411;
+    @include typo-title-medium;
+    color: $font-color-black;
     margin-bottom: 0;
 }
 
 .product__info_subtitle{
     font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 180%;
-    color: #AFADB5;
+    @include typo-parapgraph-normal;
+    color: $font-color-grey;
     margin-top: 0;
     margin-bottom: 30px;
 }
 
 .product__info_color {
     font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 130%;
-    color: #151411;
+    @include typo-parapgraph-bold;
+    color: $font-color-black;
     margin-bottom: 20px;
 }
 
 .product__info_description {
-    color: #AFADB5;
+    color: $font-color-grey;
     margin-bottom: 30px;
 }
 
@@ -72,7 +66,7 @@
         aspect-ratio: 1/1;
     }
     & div:first-child{
-        background: #151411;
+        background: $font-color-black;
     }
 
     & div:nth-of-type(2) {
@@ -88,10 +82,8 @@
 
 .product__info_price {
     font-style: normal;
-    font-weight: 700;
-    font-size: 44px;
-    line-height: 130%;
-    color: #151411;
+    @include typo-title-medium;
+    color: $font-color-black;
     margin-bottom: 50px;
 }
 
@@ -110,7 +102,7 @@
     .product {
         display: flex;
         margin: 50px 24px 30px;
-        background-color: #FFF;
+        background-color: $bg-color-white;
         
         box-sizing: border-box;
         & img {
