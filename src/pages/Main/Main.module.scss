@@ -1,4 +1,5 @@
 @import '@styles/colors.scss';
+@import '@styles/typography.scss';
 .pagination {
     width: 296px;
     height: 42px;
@@ -17,7 +18,7 @@
             width: 26px;
             height: 26px;
             text-align: center;
-            font-size: 18px;
+            @include typo-parapgraph-normal;
         }
         &_current {
             background-color: $bg-color-primary;

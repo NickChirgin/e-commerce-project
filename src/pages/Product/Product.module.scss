@@ -1,4 +1,5 @@
 @import '@styles/colors.scss';
+@import '@styles/typography.scss';
 .product_page{
     background-color: $bg-color-white;
     box-sizing: border-box;
@@ -17,11 +18,9 @@
     background-color: $bg-color-white;
     margin-left: 100px;
     font-style: normal;
-    font-weight: 700;
+    @include typo-title-medium;
     font-size: 32px;
-    line-height: 130%;
-    letter-spacing: 0.01em;
-    color: #151411;
+    color: $font-color-black;
 }
 .product__related_items {
     margin-left: 50px;
@@ -33,18 +32,14 @@
 
 .product__info_title {
     font-style: normal;
-    font-weight: 700;
-    font-size: 44px;
-    line-height: 130%;
+    @include typo-title-medium;
     color: $font-color-black;
     margin-bottom: 0;
 }
 
 .product__info_subtitle{
     font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 180%;
+    @include typo-parapgraph-normal;
     color: $font-color-grey;
     margin-top: 0;
     margin-bottom: 30px;
@@ -52,9 +47,7 @@
 
 .product__info_color {
     font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 130%;
+    @include typo-parapgraph-bold;
     color: $font-color-black;
     margin-bottom: 20px;
 }
@@ -89,9 +82,7 @@
 
 .product__info_price {
     font-style: normal;
-    font-weight: 700;
-    font-size: 44px;
-    line-height: 130%;
+    @include typo-title-medium;
     color: $font-color-black;
     margin-bottom: 50px;
 }

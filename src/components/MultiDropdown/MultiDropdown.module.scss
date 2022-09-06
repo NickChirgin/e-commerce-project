@@ -1,12 +1,13 @@
 @import '@styles/colors.scss';
+@import '@styles/typography.scss';
 .button {
+    @include typo-parapgraph-normal;
     box-sizing: border-box;
     height: 84px;
     background-position: left 57px top 27px;
     background-color: $bg-color-white;
     width: 190px;
     text-align: center;
-    font-size: 18px;
     padding-top: 23px;
     margin-left: 29px;
     margin-right: 2px;
